@@ -2,8 +2,8 @@ function [fitresult, gof, rsq, dblTime] = corona()
 
 close all;
 
-y=[1 2 3     7    10    12    15    17    21    25    39    50    75 97 126 197 250 304 427];
-x=[1 3 7 8 10 11 13:21 23:26]-1;
+y=[1 2 3     7    10    12    15    17    21    25    39    50    75 97 126 197 250 304 427 529];
+x=[1 3 7 8 10 11 13:21 23:27]-1;
 
 ft = fittype( 'exp1' );
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
