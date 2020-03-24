@@ -2,8 +2,8 @@ function [fitresult, gof, rsq, dblTime] = corona()
 
 close all;
 
-y=[1 2 3 7 10 12 15 17 21 25 39 50 75 97 126 197 250 304 427 529 705 883 945 1238];
-x=[1 3 7 8 10 11 13:21 23:31]-1;
+y=[1 2 3 7 10 12 15 17 21 25 39 50 75 97 126 197 250 304 427 529 705 883 945 1238 1656];
+x=[0 2 6 7 9 10 12:20 22:31];
 
 ft = fittype( 'exp1' );
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
@@ -47,9 +47,9 @@ datatip(func_line, next_day, feval(fitresult, next_num));
 rsq = gof.rsquare;
 dblTime = log(2)/coeffvals(2);
 
-text(startDate+3, max(fit_result)*0.5 , {['R^{2} = ' num2str(rsq)], ['Doubling time = ' num2str(dblTime,2) ' days']});
+% text(startDate+3, max(fit_result)*0.5 , {['R^{2} = ' num2str(rsq)], ['Doubling time = ' num2str(dblTime,2) ' days']});
 
-% set(gca, 'YScale', 'log');
-% text(startDate+3, max(fit_result)^0.6 , {['R^{2} = ' num2str(rsq)], ['Doubling time = ' num2str(dblTime,2) ' days']});
+set(gca, 'YScale', 'log');
+text(startDate+3, max(fit_result)^0.6 , {['R^{2} = ' num2str(rsq)], ['Doubling time = ' num2str(dblTime,2) ' days']});
 
 end
