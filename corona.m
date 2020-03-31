@@ -2,20 +2,26 @@ function [fitresult, gof, rsq, dblTime] = corona()
 
 close all;
 
-y=[1 2 3 7 10 12 15 17 21 25 39 50 75 97 126 197 250 304 427 529 705 883 945 1238 1656 2030 2495 3035 3460 3865];
-x=[0 2 6 7 9 10 12:20 22:36];
+y=[1 2 3 7 10 12 15 17 21 25 39 50 75 97 126 197 250 304 427 529 705 883 945 1238 1656 2030 2495 3035 3460 3865 4347 4831];
+x=[0 2 6 7 9 10 12:20 22:38];
 
-ft = fittype( 'exp1' );
+
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 opts.Display = 'Off';
 opts.StartPoint = [0.37 0.29];
+
+% ft = fittype( 'exp1' );
+% opts.StartPoint = [0.37 0.29];
+ft = fittype( 'linear_exp(x,a,b,c)', 'independent', 'x', 'dependent', 'y' );
+opts.StartPoint = [0.368778098811191 0.0860478500029206 0.0497598384129591];
+
 
 [fitresult, gof] = fit( x', y', ft, opts );
 coeffvals = coeffvalues(fitresult);
 
 % f=@(y) coeffvals(1)*exp(coeffvals(2)*y);
 
-ndays = 40;
+ndays = 42;
 range_num = 0:0.1:ndays;
 
 
