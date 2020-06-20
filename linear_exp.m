@@ -1,9 +1,12 @@
-function f = linear_exp(x, a,b,c)
+function f = linear_exp(x, b,c,d)
 
-d = a.*b.*exp(b.*c);
-e = (a.*exp(b.*c)) - (d.*c);
+a = d / (b*exp(b*c));
+e = a*exp(b*c);
 
-f = ((a.*exp(b.*x)) .* (x<c)) + (((d.*x)+e) .* (x>=c));
+part1 = a.*exp(b.*x);
+part2 = (d.*(x-c)) + e;
+
+f = (part1 .* (x<c)) + (part2 .* (x>=c));
 
 end
 
